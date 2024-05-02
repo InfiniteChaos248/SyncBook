@@ -1,0 +1,19 @@
+admin APIs - create booking (movie name, movie id (to show in URL), movie theatre, date, time, screen, seats), enable/disable booking
+
+login/integrate with Google Forms/generate unique access ID for each person
+
+{{url}}/boy-and-heron will open booking page showing movie info and listing seats - white = available, green = selected, gray = bloked/booked
+can select only 1 seat or multiple? - to select multiple, need to add access ID to select additional seat (1 access ID per seat)
+
+payment gateway integration? or include API for Nazo to approve payment screenshot
+
+concurrent access:
+user selects seats -> API call to check and block seat [seat already booked so can't block, seat available so block, seat blocked so need to wait and refresh for unblock or book]
+user deselects seats -> API call to check and unblock seat [can only unblock if seat is blocked by self]
+user book seats -> API call to book seats [can only book if seat is blocked by self]
+
+on block/unblock how does another user who is seeing the same screen know? polling or socket session or lazy read (API call when user selects seat and update UI then)
+use polling (sync data every 30s or 1m) and also lazy read (sync when block/unblock/book/refresh API is called)
+
+
+https://codeminion.hashnode.dev/how-does-bookmyshow-handle-concurrent-bookings
